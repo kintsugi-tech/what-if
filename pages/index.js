@@ -45,7 +45,7 @@ export default function Home() {
     return 0;
   }
 
-  const formatVP = (vp: number) => {
+  const formatVP = (vp) => {
     return (vp / 1000000).toFixed(2) + " ATOM"
   }
 
@@ -71,14 +71,18 @@ export default function Home() {
     const loadData = async () => {
       let ICF = await getICFDelegations();
 
-      let res = await axios.get("https://rest.cosmos.directory/cosmoshub/staking/validators");
+      let res = await axios.get(`${RPC}/cosmos/staking/v1beta1/validators?pagination.limit=500`);
 
-      const vals = res.data.result;
+      const vals = res.data.validators;
       
       let validatorList = [];
       let validatorsClean = [];
 
       for (const val of vals) {
+
+        if (val.jailed) {
+          continue;
+        }
 
         let power = parseFloat(val.delegator_shares);
 
@@ -112,7 +116,7 @@ export default function Home() {
 
   }, []);
 
-  const getOriginalValPosition = (validatorName: string) => {
+  const getOriginalValPosition = (validatorName) => {
     return valClean.indexOf(valClean.find((el) => el.name === validatorName))+1
   }
 
