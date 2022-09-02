@@ -50,7 +50,7 @@ export default function Home() {
   }
 
   const getICFDelegations = async () => {
-    const addresses = ["cosmos14lultfckehtszvzw4ehu0apvsr77afvyhgqhwh", "cosmos1z8mzakma7vnaajysmtkwt4wgjqr2m84tzvyfkz"]
+    const addresses = ["cosmos1unc788q8md2jymsns24eyhua58palg5kc7cstv", "cosmos1z8mzakma7vnaajysmtkwt4wgjqr2m84tzvyfkz"]
 
     let delegations_aggregated = [];
 
