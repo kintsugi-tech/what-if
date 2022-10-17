@@ -27,7 +27,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { bech32 } from 'bech32';
 
-const RPC = "https://api-cosmoshub-ia.cosmosia.notional.ventures";
+const RPC = "https://lcd-cosmos.mib.tech";
 
 export default function Home() {
   const { colorMode, toggleColorMode } = useColorMode();
